@@ -30,10 +30,15 @@ use: (read-spec '(no-arg [\"name\"] \"the program name\"))"
      (merge-opt-map specs
                     (parse-cmdline-from-specs specs argv prog-name))))
 
+(defn opt-name
+  "Convert a symbol or other literal into an option name string."
+  [o]
+  (if (nil? o) "nil" (str o)))
+
 (defn desugar-spec [spec]
   (let [[type & more] spec
         [names [doc & opts]] (split-with (! string?) more)]
-    `(~type ~(vec (map str names)) ~doc ~@opts)))
+    `(~type ~(vec (map opt-name names)) ~doc ~@opts)))
 
 (defn desugar-specs* [specs]
   (vec (map desugar-spec specs)))
