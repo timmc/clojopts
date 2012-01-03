@@ -1,6 +1,9 @@
 (ns clojopts.test.core
   (:use clojopts.core)
-  (:use clojure.test))
+  (:use clojure.test)
+  (:require clojopts.getopt))
+
+(alter-var-root #'clojopts.getopt/*testing* (constantly true))
 
 (deftest integration
   (is (= (clojopts "clojopts"

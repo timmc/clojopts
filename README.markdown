@@ -35,7 +35,9 @@ macro. It requires your program's name (for
 output in usage and version messages), a seq of command-line options,
 and any number of option specifiers. Returns a map of any options
 contained in the command line. Any non-option arguments will be
-supplied under the key `:clojopts/more`.
+supplied under the key `:clojopts/more`. If the options are invalid,
+System/exit is call, or if clojopts.getopt/*testing* is bound to true,
+an empty map is returned.
 
 Options are specified in the following format:
 `(arg-type name+ docstring & options)`
