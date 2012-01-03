@@ -50,9 +50,8 @@ use: (read-spec '(no-arg [\"name\"] \"the program name\"))"
   "The main entry point for clojopts. Requires your program's
 name (for output in usage and version messages), a seq of command-line
 options, and any number of option specifiers. Returns a map of any
-options contained in the command line. Currently discards(!) all
-non-option arguments, but a future (pre-1.0) version will add them
-under the key :clojopts/more.
+options contained in the command line. All non-option arguments will be
+added under the key :clojopts/more.
 
 Options are specified in the following format:
 <(arg-type name+ docstring & options)>

@@ -24,8 +24,9 @@ Clojure programs.
     (clojopts "clojopts"
                 *argv*
                 (optional-arg file f name "The file to use"
-                              :parse #(java.io.File. %))
-                (with-arg lines n "How many lines to read"))
+                              :type :file)
+                (with-arg lines n "How many lines to read"
+                                :type :int))
     => {:file #<File ~/src/clojure/awesome.clj>, :lines 10}
 
 ### Detailed usage options
